@@ -1,0 +1,155 @@
+:root{
+  --sidebar: #088395;
+  --text-color: #2d3327;
+  --backgroundcolor: #ffff;
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Poppins, sans-serif;
+}
+
+body{
+  display: flex;
+  height: 100dvh;
+  width: 100vw;
+  background-color: var(--backgroundcolor);
+  overflow: hidden;
+}
+
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  width: 75px;
+  overflow: hidden;
+  background-color: var(--sidebar);
+  transition: width 0.3s ease;
+}
+
+.ascot{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  position: relative;
+  width: 75px;
+}
+
+.ascot span{
+  position: absolute;
+  left: 65px;
+  top: 40%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-left: 10px;
+  color: white;
+  max-width: 250px;
+  line-height: 1.2;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 7.5px;
+  margin-bottom: 50px;
+}
+
+.ascot-logo{
+  width: 60px;
+}
+
+nav{
+  margin-bottom: 100px;
+}
+
+nav a, button{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 10px;
+  color: white;
+  text-decoration: none;
+  width: 75px;
+}
+
+nav a span{
+  position: absolute;
+  left: 65px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-left: 10px;
+  max-width: 230px;
+  line-height: 1.2;
+}
+
+.icon-logo{
+  width: 30px;
+}
+
+button{
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button .button {
+  width: 30px;
+  display: block;
+}
+
+.sidebar.expanded {
+  width: 250px;
+}
+
+.sidebar.expanded nav a span,
+.sidebar.expanded .ascot span {
+  opacity: 1;
+}
+
+.content{
+  flex: 1;
+  margin-left: 20px;
+  margin-right: 20px;
+  overflow: hidden;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.div1 { 
+  grid-area: 1 / 1 / 4 / 3; 
+  height: 50dvh;
+  background-color: #50e8ff;
+}
+
+.div2 { 
+  grid-area: 4 / 1 / 6 / 3; 
+  background-color: #2d3327;
+}
+
+.div3 { 
+  grid-area: 3 / 3 / 6 / 5; 
+  background-color: brown;
+}
+
+.div4 { 
+  grid-area: 1 / 3 / 3 / 5; 
+  background-color: chocolate;
+}

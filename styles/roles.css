@@ -1,0 +1,323 @@
+/* Sage Green Color System Variables */
+:root {
+  --sage-green: #b5c99a;
+  --warm-cream: #f7f3e9;
+  --soft-blush: #e8d5d3;
+  --dusty-rose: #d4a5a5;
+  --deep-forest: #6b7c5a;
+  --charcoal: #2d3327;
+  --light-sage: #f0f4eb;
+  --soft-gold: #d4b896;
+  --form-bg: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--sage-green) 0%, var(--light-sage) 100%);
+  padding: 2rem;
+}
+
+.form-container {
+  background: var(--form-bg);
+  padding: 3rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 
+    0 20px 40px rgba(45, 51, 39, 0.15),
+    0 10px 20px rgba(45, 51, 39, 0.1);
+  width: 100%;
+  max-width: 480px;
+  border: 1px solid var(--light-sage);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.form-header h2 {
+  font-size: 2rem;
+  color: var(--charcoal);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.form-header p {
+  color: var(--deep-forest);
+  font-size: 1rem;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 1.25rem;
+  border-radius: 12px;
+  background: var(--warm-cream);
+  border: 2px solid var(--light-sage);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(181, 201, 154, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.option:hover {
+  transform: translateY(-2px);
+  background: var(--light-sage);
+  border-color: var(--sage-green);
+  box-shadow: 
+    0 8px 25px rgba(45, 51, 39, 0.12),
+    0 4px 12px rgba(45, 51, 39, 0.08);
+}
+
+.option:hover::before {
+  left: 100%;
+}
+
+.option:has(input[type="radio"]:checked) {
+  background: linear-gradient(135deg, var(--sage-green) 0%, var(--deep-forest) 100%);
+  color: var(--warm-cream);
+  border-color: var(--deep-forest);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 25px rgba(107, 124, 90, 0.25),
+    0 4px 12px rgba(107, 124, 90, 0.15);
+}
+
+.option-content {
+  display: flex;
+  align-items: center;
+}
+
+.option-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+.option:has(input[type="radio"]:checked) .option-label {
+  color: var(--warm-cream);
+  font-weight: 600;
+}
+
+/* Role Icons */
+.role-icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.option:hover .role-icon {
+  transform: scale(1.1);
+}
+
+.option:has(input[type="radio"]:checked) .role-icon {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* Custom Radio Button Styling */
+.radio-wrapper {
+  position: relative;
+}
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--sage-green);
+  border-radius: 50%;
+  background: var(--warm-cream);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+input[type="radio"]:hover {
+  border-color: var(--deep-forest);
+  box-shadow: 0 0 0 3px rgba(181, 201, 154, 0.1);
+}
+
+input[type="radio"]:checked {
+  border-color: var(--warm-cream);
+  background: var(--warm-cream);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: var(--deep-forest);
+  border-radius: 50%;
+  animation: radioCheck 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* When parent option is selected, adjust radio colors */
+.option:has(input[type="radio"]:checked) input[type="radio"] {
+  border-color: var(--warm-cream);
+  background: var(--warm-cream);
+}
+
+.option:has(input[type="radio"]:checked) input[type="radio"]::after {
+  background: var(--deep-forest);
+}
+
+@keyframes radioCheck {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Submit Button */
+.submit-button {
+  width: 100%;
+  padding: 1.2rem 2rem;
+  border: none;
+  border-radius: 50px;
+  background: var(--sage-green);
+  color: var(--warm-cream);
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(181, 201, 154, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.submit-button:hover {
+  background: var(--deep-forest);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(107, 124, 90, 0.4);
+}
+
+.submit-button:hover::before {
+  left: 100%;
+}
+
+.submit-button:active {
+  transform: translateY(-1px);
+}
+
+.submit-button:disabled {
+  background: var(--light-sage);
+  color: var(--deep-forest);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  body {
+    padding: 1rem;
+  }
+
+  .form-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .form-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .option {
+    padding: 1.2rem 1rem;
+  }
+
+  .option-label {
+    font-size: 1rem;
+  }
+
+  .role-icon {
+    font-size: 1.3rem;
+    margin-right: 0.8rem;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus states for keyboard navigation */
+.option:focus-within {
+  outline: 2px solid var(--sage-green);
+  outline-offset: 2px;
+}
+
+input[type="radio"]:focus {
+  outline: 2px solid var(--sage-green);
+  outline-offset: 2px;
+}
+
+.submit-button:focus {
+  outline: 2px solid var(--charcoal);
+  outline-offset: 2px;
+}
